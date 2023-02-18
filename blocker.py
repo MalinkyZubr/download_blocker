@@ -5,13 +5,14 @@ import logging
 
 class DownloadBlocker:
     def __init__(self, file_names: list[str], download_path: str, background: bool=False):
-        logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
         if not background:
+            logging.basicConfig(level=logging.INFO)
             self.logger.info("Started")
         self.names = file_names
         self.download_path = download_path
         os.chdir(self.download_path)
+        self.logger.info("started")
 
     def check_and_delete(self):
         while True:
